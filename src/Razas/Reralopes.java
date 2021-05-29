@@ -1,17 +1,19 @@
 package Razas;
 
 public class Reralopes extends Raza{
-
+	private final static int SALUD_BASE=53;
 	private int golpesDados;
 	private int potenciados;
 	
 	public Reralopes() {
-		this.danio_Basico = 27;
+		this.danio_Basico = SALUD_BASE;
 		this.salud = 53;
 	}
 
 	@Override
 	protected int recibirDanio(int i) {
+		int danio = i;
+		this.salud-= danio;
 		potenciados = 0;
 		return i;
 	}
@@ -27,9 +29,9 @@ public class Reralopes extends Raza{
 		
 		if(golpesDados % 2 == 0) {
 			if(potenciados != 0) {
-				enemigo.salud -= enemigo.recibirDanio(danio_Basico*2);
+				enemigo.recibirDanio(danio_Basico*2);
 			}else {
-			enemigo.salud -=  enemigo.recibirDanio(danio_Basico);
+			enemigo.recibirDanio(danio_Basico);
 			}
 		}
 		golpesDados++;

@@ -1,17 +1,17 @@
 package Razas;
 
 public class Radaiteran extends Raza{
-
+	private final static int SALUD_BASE=56;
 	
 	
 	public Radaiteran() {
 		this.danio_Basico=36;
-		this.salud=56;
+		this.salud=SALUD_BASE;
 	}
 	
 	@Override
 	protected void atacar(Raza enemigo) {
-		enemigo.salud -= enemigo.recibirDanio(this.danio_Basico);
+		enemigo.recibirDanio(this.danio_Basico);
 		
 		this.danio_Basico += 3;
 	}
@@ -19,6 +19,7 @@ public class Radaiteran extends Raza{
 	@Override
 	protected int recibirDanio(int i) {
 		int danio=i;
+		this.salud-=i;
 		return danio;
 	}
 

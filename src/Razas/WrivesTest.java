@@ -1,6 +1,8 @@
 package Razas;
 import org.junit.Test;
 
+import Razas.Raza.Status;
+
 import org.junit.Assert;
 
 public class WrivesTest {
@@ -34,7 +36,7 @@ public class WrivesTest {
 	 * se esperaba que ataque con el doble de su danio base(113) 
 	 */
 	@Test
-	public void testHumano003() {
+	public void testWrives003() {
 		Wrives wrive = new Wrives();
 		Humanos humano2 = new Humanos();
 		
@@ -43,6 +45,17 @@ public class WrivesTest {
 		wrive.atacar(humano2);	
 	}
 	
+	
+	@Test
+	public void testWrives004() {
+		Wrives wrive = new Wrives();
+		Wrives wrive2 = new Wrives();
+		
+		wrive.atacar(wrive2);
+		wrive.atacar(wrive2);
+		Assert.assertEquals(Status.DESMAYADO, wrive2.getStatus());
+			
+	}
 	
 
 }
