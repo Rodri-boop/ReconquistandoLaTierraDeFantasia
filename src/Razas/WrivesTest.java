@@ -45,7 +45,10 @@ public class WrivesTest {
 		wrive.atacar(humano2);	
 	}
 	
-	
+	/**
+	 * Test sobre el status de la unidad si su salud es menor o igual a 0 
+	 * la unidad es retirada del ejercito
+	 */
 	@Test
 	public void testWrives004() {
 		Wrives wrive = new Wrives();
@@ -57,5 +60,52 @@ public class WrivesTest {
 			
 	}
 	
+	/**
+	 * Test sobre el status de la unidad si su salud es diferente a su salud inicial
+	 * esta unidad esta herida y su estado es de HERIDO
+	 */
+	@Test
+	public void testWrives005() {
+		Humanos humano = new Humanos();
+		Wrives wrive2 = new Wrives();
+		
+		humano.atacar(wrive2);
+		humano.atacar(wrive2);
+		Assert.assertEquals(Status.HERIDO, wrive2.getStatus());
+			
+	}
+	
+	/**
+	 * Si un wrive descansa no puede atacar hasta ser atacado
+	 * entonces la vida del humano seria la salud inicial
+	 */
+	@Test
+	public void testWrives006() {
+		Humanos humano = new Humanos();
+		Wrives wrive = new Wrives();
+		
+		wrive.descansar();
+		wrive.atacar(humano);
+		Assert.assertEquals(1000, humano.salud);
+			
+	}
+	
+	/**
+	 * Si un wrive descansa no puede atacar hasta que es atacado nuevamente 
+	 * entonces no se ejecuta el primer ataca pero el segundo luego de ser 
+	 * el wrives recurre a la violencia.
+	 */
+	@Test
+	public void testWrives007() {
+		Humanos humano = new Humanos();
+		Wrives wrive = new Wrives();
+		
+		wrive.descansar();
+		wrive.atacar(humano);
+		humano.atacar(wrive);
+		wrive.atacar(humano);
+		Assert.assertEquals(887, humano.salud);
+			
+	}
 
 }

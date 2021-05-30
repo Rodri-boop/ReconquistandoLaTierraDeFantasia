@@ -11,26 +11,6 @@ public class Nortaichian extends Raza {
 	}
 	
 	@Override
-	protected int recibirDanio(int i) {
-		
-		int danio=i;
-		this.salud-=danio;
-		
-		potenciador = 2;
-		if(this.turnosDePiedra != 0 ) {
-			return i/2;
-		}
-		return i;
-	}
-
-	@Override
-	protected void descansar() {
-		this.salud = 66;
-		this.turnosDePiedra = 2;
-		
-	}
-
-	@Override
 	protected void atacar(Raza enemigo) {
 		if(turnosDePiedra == 0) {
 			if(potenciador != 0) {
@@ -46,5 +26,26 @@ public class Nortaichian extends Raza {
 		}
 	}
 	
+	
+	@Override
+	protected int recibirDanio(int i) {
+		
+		int danio=i;
+		this.salud-=danio;
+		super.setDesmayado(SALUD_BASE);
+		potenciador = 2;
+		if(this.turnosDePiedra != 0 ) {
+			return i/2;
+		}
+		return i;
+	}
+
+	@Override
+	protected void descansar() {
+		this.salud = 66;
+		this.turnosDePiedra = 2;
+		
+	}
+
 
 }

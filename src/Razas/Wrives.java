@@ -40,7 +40,7 @@ public class Wrives extends Raza{
 		if(this.zen) {
 			this.zen=false;
 		}
-		super.setDesmayado();
+		super.setDesmayado(SALUD_BASE);
 		int danio = danioRecibido*2;
 		this.salud-=danio;
 		return danio;
