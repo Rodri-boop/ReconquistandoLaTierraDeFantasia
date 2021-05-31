@@ -9,6 +9,8 @@ import Razas.Poblado.Bando;
 import Razas.Raza.Status;
 
 public class Ejercito extends Unidad {
+	
+	//hola esto es de prueba
 
 	private ArrayList [] army;
 	private ArrayList <Unidad> aliados= new ArrayList<Unidad>();
