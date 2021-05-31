@@ -7,10 +7,13 @@ public class Poblado {
 	private String tipoRaza;
 	private Bando bando;
 	private Queue<Raza> ejercito= new  ArrayDeque<Raza>();
+	//clase aparte 
 	public enum Bando{
 		ENEMIGO,
-		ALIADO
+		ALIADO,
+		PROPIO
 	}
+	//ejercito no cola
 	public Poblado(String raza,int cantidad,String bando){
 	 this.tipoRaza=raza;
 	 if(bando=="Aliado") {

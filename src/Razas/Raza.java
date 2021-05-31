@@ -6,7 +6,7 @@ public abstract class Raza extends Unidad{
 	protected int rangoDe_Ataque;
 	protected int danio_Basico;
 	protected Status estado;
-
+// TODO:hacer enum de razas 
 
 	/**
 	 * Constructor inicial de cada raza en base a sus valores puede ser cambiado.
