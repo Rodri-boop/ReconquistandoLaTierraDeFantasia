@@ -34,7 +34,7 @@ public abstract class Raza extends Unidad{
 	 * @return
 	 */
 	protected abstract int recibirDanio(int i);
-	
+	protected abstract void atacar(Raza enemigos);
 	
 	protected abstract void descansar();
 
@@ -42,13 +42,13 @@ public abstract class Raza extends Unidad{
 	 * Cuando lso puntos de salud de una unidad llegan a 0 se desmayan y quedan
 	 * fuera de la batalla.
 	 */
-	protected void setDesmayado(int saludBase) {
+	protected void setDesmayado() {
 		if(salud<=0) {
 			estado = Status.DESMAYADO;
-		}else if(saludBase!=this.salud) {
-			estado = Status.HERIDO;
 		}
 	}
+	
+	//setear herido para todas las clases y agregarlo a recibir daño
 	
 	public Status getStatus() {
 		return this.estado;
