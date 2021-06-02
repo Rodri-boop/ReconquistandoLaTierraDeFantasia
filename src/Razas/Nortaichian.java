@@ -1,7 +1,7 @@
 package Razas;
 
 public class Nortaichian extends Raza {
-	private final static int SALUD_BASE=66;
+	private final static Double SALUD_BASE=66.0;
 	private int potenciador;
 	private int turnosDePiedra;
 	
@@ -20,12 +20,13 @@ public class Nortaichian extends Raza {
 		if(this.turnosDePiedra != 0 ) {
 			return i/2;
 		}
+		super.setDesmayado();
 		return i;
 	}
 
 	@Override
 	protected void descansar() {
-		this.salud = 66;
+		this.salud = 66.0;
 		this.turnosDePiedra = 2;
 		
 	}

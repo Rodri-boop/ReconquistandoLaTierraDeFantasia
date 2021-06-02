@@ -1,7 +1,7 @@
 package Razas;
 
 public class Wrives extends Raza{
-	private int SALUD_BASE=108;
+	private Double SALUD_BASE = 108.0;
 	private int golpesDados;
 	private boolean zen;
 
@@ -40,9 +40,9 @@ public class Wrives extends Raza{
 		if(this.zen) {
 			this.zen=false;
 		}
-		super.setDesmayado();
 		int danio = danioRecibido*2;
 		this.salud-=danio;
+		super.setDesmayado();
 		return danio;
 	}
 

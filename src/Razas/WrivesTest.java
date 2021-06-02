@@ -27,7 +27,7 @@ public class WrivesTest {
 		
 		wrive.descansar();
 		Assert.assertNotNull(wrive);
-		Assert.assertEquals(158,wrive.salud);
+		Assert.assertEquals(158,wrive.salud,0.1);
 	}
 	
 	
@@ -41,7 +41,7 @@ public class WrivesTest {
 		Humanos humano2 = new Humanos();
 		
 		wrive.atacar(humano2);
-		Assert.assertEquals(887, humano2.salud);
+		Assert.assertEquals(887, humano2.salud,0.1);
 		wrive.atacar(humano2);	
 	}
 	

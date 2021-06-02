@@ -1,13 +1,13 @@
 package Razas;
 
 public class Reralopes extends Raza{
-	private final static int SALUD_BASE=53;
+	private final static Double SALUD_BASE = 53.0;
 	private int golpesDados;
 	private int potenciados;
 	
 	public Reralopes() {
-		this.danio_Basico = SALUD_BASE;
-		this.salud = 53;
+		this.danio_Basico = 27;
+		this.salud = SALUD_BASE;
 	}
 
 	@Override
@@ -15,6 +15,7 @@ public class Reralopes extends Raza{
 		int danio = i;
 		this.salud-= danio;
 		potenciados = 0;
+		super.setDesmayado();
 		return i;
 	}
 

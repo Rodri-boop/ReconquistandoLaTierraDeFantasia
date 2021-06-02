@@ -2,7 +2,6 @@ package Razas;
 
 public abstract class Raza extends Unidad{
 
-	protected int salud;
 	protected int rangoDe_Ataque;
 	protected int danio_Basico;
 	protected Status estado;
@@ -57,5 +56,8 @@ public abstract class Raza extends Unidad{
 	
 	public Status getStatus() {
 		return this.estado;
+	}
+	public Double getSalud() {
+		return this.salud;
 	}
 }

@@ -13,6 +13,7 @@ public class Ejercito extends Unidad {
 	private Queue<Unidad> army = new PriorityQueue<Unidad>();
 	private Queue<Unidad> auxiliar = new PriorityQueue<Unidad>();
 	private Bando bando;
+	private Unidad soldadoListo;
 	
 	
 	
@@ -93,6 +94,20 @@ public class Ejercito extends Unidad {
 	protected int recibirDanio(int danio) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	@Override
+	protected Double getSalud() {
+		Double total = 0.0;
+		while(!army.isEmpty()) {
+			auxiliar.add(army.poll());
+		}
+		while(!auxiliar.isEmpty()) {
+			Unidad soldado = auxiliar.poll();
+			total += soldado.getSalud();
+			army.add(soldado);
+		}
+		return total;
 	}
 	
 	

@@ -3,7 +3,7 @@ package Razas;
 public class Humanos extends Raza{
 
 	public Humanos() {
-		super.salud=1000;
+		super.salud=1000.0;
 		super.danio_Basico=10;
 		super.rangoDe_Ataque=10;
 	}
@@ -28,5 +28,9 @@ public class Humanos extends Raza{
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	
 
 }

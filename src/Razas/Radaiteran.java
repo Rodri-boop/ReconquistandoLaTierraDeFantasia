@@ -1,12 +1,12 @@
 package Razas;
 
 public class Radaiteran extends Raza{
-	private final static int SALUD_BASE=56;
+	private final static Double SALUD_BASE = 56.0;
 	
 	
 	public Radaiteran() {
-		this.danio_Basico=36;
-		this.salud=SALUD_BASE;
+		this.danio_Basico = 36;
+		this.salud = SALUD_BASE;
 	}
 	
 	@Override
@@ -20,12 +20,13 @@ public class Radaiteran extends Raza{
 	protected int recibirDanio(int i) {
 		int danio=i;
 		this.salud-=i;
+		super.setDesmayado();
 		return danio;
 	}
 
 	@Override
 	protected void descansar() {
-		//la consigna dice no hace nada asi que no ahce nada(?
+		//la consigna dice no hace nada asi que no hace nada(?
 		
 	}
 

@@ -19,7 +19,7 @@ public class HumanosTest {
 		
 		humano.descansar();
 		Assert.assertNotNull(humano);
-		Assert.assertEquals(110,humano.salud);
+		Assert.assertEquals(110.0, humano.salud, 0.1);
 	}
 	
 	@Test
