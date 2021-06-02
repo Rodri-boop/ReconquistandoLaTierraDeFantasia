@@ -6,23 +6,18 @@ import java.util.Queue;
 public class Poblado {
 	private String tipoRaza;
 	private Bando bando;
-	private Queue<Raza> ejercito= new  ArrayDeque<Raza>();
-	//clase aparte 
-	public enum Bando{
-		ENEMIGO,
-		ALIADO,
-		PROPIO
-	}
+	private Queue<Raza> ejercito= new  ArrayDeque<Raza>(); 
+	
 	//ejercito no cola
-	public Poblado(String raza,int cantidad,String bando){
+	public Poblado(String raza, int cantidad, String bando){
 	 this.tipoRaza=raza;
-	 if(bando=="Aliado") {
-		this.bando=Bando.ALIADO;
+	 if(bando == "Aliado") {
+		this.bando = Bando.ALIADO;
 	 }else{
-			this.bando=Bando.ENEMIGO;
+			this.bando = Bando.ENEMIGO;
 	 }
 	 Raza soldado;
-		if(raza== "Nortaichian") {
+		if(raza == "Nortaichian") {
 			
 			for(int i =0;i<cantidad;i++) {
 			   soldado= new Nortaichian();

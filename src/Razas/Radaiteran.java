@@ -10,7 +10,7 @@ public class Radaiteran extends Raza{
 	}
 	
 	@Override
-	protected void atacar(Raza enemigo) {
+	protected void atacar(Unidad enemigo) {
 		enemigo.recibirDanio(this.danio_Basico);
 		
 		this.danio_Basico += 3;

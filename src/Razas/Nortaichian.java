@@ -31,7 +31,7 @@ public class Nortaichian extends Raza {
 	}
 
 	@Override
-	protected void atacar(Raza enemigo) {
+	protected void atacar(Unidad enemigo) {
 		if(turnosDePiedra == 0) {
 			if(potenciador != 0) {
 				enemigo.recibirDanio(danio_Basico*2);

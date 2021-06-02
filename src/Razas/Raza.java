@@ -6,8 +6,14 @@ public abstract class Raza extends Unidad{
 	protected int rangoDe_Ataque;
 	protected int danio_Basico;
 	protected Status estado;
-// TODO:hacer enum de razas 
 
+
+	public enum tipoDeRaza{
+		NORTAICHIAN,
+		WRIVES,
+		RADAITERAN,
+		RERALOPES
+	}
 	/**
 	 * Constructor inicial de cada raza en base a sus valores puede ser cambiado.
 	 * @param saludInicial
@@ -34,7 +40,6 @@ public abstract class Raza extends Unidad{
 	 * @return
 	 */
 	protected abstract int recibirDanio(int i);
-	protected abstract void atacar(Raza enemigos);
 	
 	protected abstract void descansar();
 

@@ -25,7 +25,7 @@ public class Reralopes extends Raza{
 	}
 
 	@Override
-	protected void atacar(Raza enemigo) {
+	protected void atacar(Unidad enemigo) {
 		
 		if(golpesDados % 2 == 0) {
 			if(potenciados != 0) {

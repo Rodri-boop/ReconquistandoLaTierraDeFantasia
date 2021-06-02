@@ -17,7 +17,7 @@ public class Wrives extends Raza{
 	 * Cuando ataca, lo hace con 2 veces su daño, cada 2 ataques.
 	 */
 	@Override
-	protected void atacar(Raza enemigo) {
+	protected void atacar(Unidad enemigo) {
 		if(!this.zen) {
 		if(golpesDados==1) {
 			enemigo.recibirDanio(this.danio_Basico*2);
@@ -60,6 +60,10 @@ public class Wrives extends Raza{
 
 		
 	}
+
+
+
+
 	
 
 }

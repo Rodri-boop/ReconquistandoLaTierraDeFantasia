@@ -8,11 +8,7 @@ public class Humanos extends Raza{
 		super.rangoDe_Ataque=10;
 	}
 
-	@Override
-	protected void atacar(Raza enemigos) {
-		enemigos.recibirDanio(10);
-		
-	}
+	
 
 	@Override
 	protected int recibirDanio(int danioRecibido) {
@@ -25,6 +21,12 @@ public class Humanos extends Raza{
 	@Override
 	protected void descansar() {
 		this.salud += 10;		
+	}
+
+	@Override
+	protected void atacar(Unidad enemigo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
