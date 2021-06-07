@@ -87,9 +87,9 @@ public class Ejercito extends Unidad {
 	}
 	@Override
 	protected void atacar(Unidad enemigo) {
-		//ControladorDeBatalla.getControlador().batallar(this, enemigo);
-		
+		//ControladorDeBatalla.getControlador().batallar(this, enemigo);	
 	}
+	
 	@Override
 	protected int recibirDanio(int danio) {
 		// TODO Auto-generated method stub
