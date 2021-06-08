@@ -6,13 +6,6 @@ public abstract class Raza extends Unidad{
 	protected int danio_Basico;
 	protected Status estado;
 
-
-	public enum tipoDeRaza{
-		NORTAICHIAN,
-		WRIVES,
-		RADAITERAN,
-		RERALOPES
-	}
 	/**
 	 * Constructor inicial de cada raza en base a sus valores puede ser cambiado.
 	 * @param saludInicial
@@ -20,7 +13,7 @@ public abstract class Raza extends Unidad{
 	 * @param danioBasico
 	 */
 	Raza() {
-		this.estado = Status.VIVO;
+		this.estado = Status.SANO;
 	}
 
 	/**
@@ -29,7 +22,7 @@ public abstract class Raza extends Unidad{
 	 *
 	 */
 	public enum Status{
-		VIVO,DESMAYADO,HERIDO//MUERTO
+		SANO,HERIDO//MUERTO
 	}	
 
 
@@ -41,16 +34,6 @@ public abstract class Raza extends Unidad{
 	protected abstract int recibirDanio(int i);
 	
 	protected abstract void descansar();
-
-	/**
-	 * Cuando lso puntos de salud de una unidad llegan a 0 se desmayan y quedan
-	 * fuera de la batalla.
-	 */
-	protected void setDesmayado() {
-		if(salud<=0) {
-			estado = Status.DESMAYADO;
-		}
-	}
 	
 	//setear herido para todas las clases y agregarlo a recibir daño
 	
@@ -60,4 +43,12 @@ public abstract class Raza extends Unidad{
 	public Double getSalud() {
 		return this.salud;
 	}
+	
+	protected void setStatus(Double salud1) {
+        if(this.salud == salud1) {
+            estado = Status.SANO;
+        }else if(this.salud!=salud1){
+            estado = Status.HERIDO;
+        }
+    }
 }

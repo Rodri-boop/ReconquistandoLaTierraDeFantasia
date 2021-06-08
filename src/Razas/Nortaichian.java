@@ -1,7 +1,7 @@
 package Razas;
 
 public class Nortaichian extends Raza {
-	private final static Double SALUD_BASE=66.0;
+	private final static Double SALUD_BASE = 66.0;
 	private int potenciador;
 	private int turnosDePiedra;
 	
@@ -11,17 +11,17 @@ public class Nortaichian extends Raza {
 	}
 	
 	@Override
-	protected int recibirDanio(int i) {
-		
-		int danio=i;
-		this.salud-=danio;
-		
-		potenciador = 2;
-		if(this.turnosDePiedra != 0 ) {
-			return i/2;
+	protected int recibirDanio(int danioRecibido) {
+		int danio=danioRecibido;
+		if(turnosDePiedra != 0) {
+			this.salud -= danio/2;
+			super.setStatus(SALUD_BASE);
+			return danio/2;
 		}
-		super.setDesmayado();
-		return i;
+		this.salud-=danio;
+		super.setStatus(SALUD_BASE);
+		potenciador = 2;
+		return danio;
 	}
 
 	@Override
@@ -36,16 +36,25 @@ public class Nortaichian extends Raza {
 		if(turnosDePiedra == 0) {
 			if(potenciador != 0) {
 				enemigo.recibirDanio(danio_Basico*2);
-				this.salud += this.salud*0.04;
+				roboDeVida();
 				potenciador--;
 			}else {
 				enemigo.recibirDanio(danio_Basico);
-				this.salud += this.salud*0.04;
+				roboDeVida();
 			}
 		}else{
 			turnosDePiedra--;//es un contador que va a crecer constantemente hasta que descanse y se hardcodee en 2.
 		}
 	}
 	
+	private void roboDeVida() {
+		if(this.salud!= SALUD_BASE) {
+			this.salud += this.salud*0.04;
+		}
+		else if(this.salud==SALUD_BASE){
+//			this.salud+=0;	
+		}
+		
+	}
 
 }

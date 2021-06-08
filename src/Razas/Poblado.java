@@ -1,6 +1,6 @@
 package Razas;
 
-import Razas.Raza.tipoDeRaza;
+import Razas.TipoDeRaza;
 
 public class Poblado {
 	private Bando bando;
@@ -8,7 +8,7 @@ public class Poblado {
 	
 	
 	//ejercito no cola
-	public Poblado(tipoDeRaza raza, int cantidad, Bando bando){
+	public Poblado(TipoDeRaza raza, int cantidad, Bando bando){
 		this.bando = bando;
 		army = new Ejercito(raza, cantidad, bando);
 	}
@@ -18,6 +18,10 @@ public class Poblado {
 	}
 	public Bando getBando() {
 		return this.bando;
+	}
+	
+	public void atacar(Ejercito ejPropio) {
+		ControladorDeBatalla.getControlador().batallar(ejPropio, this.army);;
 	}
 }
 	

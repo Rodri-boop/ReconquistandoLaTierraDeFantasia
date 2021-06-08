@@ -1,7 +1,7 @@
 package Razas;
 
 public class Wrives extends Raza{
-	private Double SALUD_BASE = 108.0;
+	private Double SALUD_BASE=108.0;
 	private int golpesDados;
 	private boolean zen;
 
@@ -9,7 +9,6 @@ public class Wrives extends Raza{
 		this.danio_Basico=113;
 		this.salud=SALUD_BASE;
 		this.zen=false;
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -36,13 +35,12 @@ public class Wrives extends Raza{
 	 */
 	@Override
 	protected int recibirDanio(int danioRecibido) {
-		//que reciba el set de super
 		if(this.zen) {
 			this.zen=false;
 		}
 		int danio = danioRecibido*2;
 		this.salud-=danio;
-		super.setDesmayado();
+		super.setStatus(SALUD_BASE);
 		return danio;
 	}
 
@@ -56,14 +54,5 @@ public class Wrives extends Raza{
 		this.zen=true;
 		this.SALUD_BASE+=50;
 		this.salud +=50;
-		// TODO que entre en modo zen hasta ser atacado
-
-		
 	}
-
-
-
-
-	
-
 }

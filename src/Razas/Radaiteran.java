@@ -1,34 +1,32 @@
 package Razas;
 
 public class Radaiteran extends Raza{
-	private final static Double SALUD_BASE = 56.0;
-	
+	private final static Double SALUD_BASE=36.0;
+	private Integer golpesDados=0;
 	
 	public Radaiteran() {
-		this.danio_Basico = 36;
-		this.salud = SALUD_BASE;
+		this.danio_Basico=56;
+		this.salud=SALUD_BASE;
 	}
 	
 	@Override
 	protected void atacar(Unidad enemigo) {
-		enemigo.recibirDanio(this.danio_Basico);
+		golpesDados++;
+		enemigo.recibirDanio(this.danio_Basico+3*golpesDados);
 		
-		this.danio_Basico += 3;
 	}
 	
 	@Override
-	protected int recibirDanio(int i) {
-		int danio=i;
-		this.salud-=i;
-		super.setDesmayado();
+	protected int recibirDanio(int danioRecibido) {
+		int danio=danioRecibido;
+		this.salud-=danio;
+		super.setStatus(SALUD_BASE);
 		return danio;
 	}
 
 	@Override
 	protected void descansar() {
-		//la consigna dice no hace nada asi que no hace nada(?
+		//la consigna dice no hace nada asi que no ahce nada(?
 		
 	}
-
-
 }

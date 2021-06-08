@@ -9,7 +9,7 @@ public class WrivesTest {
 	
 	
 	/**
-	 * primer tes para ver que el objeto no este vacio
+	 * primer test para ver que el objeto no este vacio
 	 */
 	@Test
 	public void testWrives001() {
@@ -25,9 +25,8 @@ public class WrivesTest {
 	public void testWrives002() {
 		Wrives wrive = new Wrives();
 		
-		wrive.descansar();
 		Assert.assertNotNull(wrive);
-		Assert.assertEquals(158,wrive.salud,0.1);
+		Assert.assertEquals(108,wrive.salud,0.1);
 	}
 	
 	
@@ -53,9 +52,33 @@ public class WrivesTest {
 		
 		wrive.atacar(wrive2);
 		wrive.atacar(wrive2);
-		Assert.assertEquals(Status.DESMAYADO, wrive2.getStatus());
+		//Assert.assertEquals(Status.DESMAYADO, wrive2.getStatus());
 			
 	}
 	
 
+	/**
+	 * Si un wrive descansa su salud base y su salud aumentan en 50 puntos
+	 */
+	@Test
+	public void testWrives005() {
+		Humanos humano = new Humanos();
+		Wrives wrive = new Wrives();
+		
+		wrive.descansar();
+		Assert.assertEquals(158,wrive.salud,0.1);
+		humano.atacar(wrive);
+		wrive.atacar(humano);
+		Assert.assertEquals(138, wrive.salud,0.1);
+	}
+	
+	@Test
+	public void testWrives006() {
+		Wrives wrive = new Wrives();
+		Humanos humano = new Humanos();
+		
+		humano.atacar(wrive);
+		Assert.assertEquals(Status.HERIDO, wrive.getStatus());
+			
+	}
 }

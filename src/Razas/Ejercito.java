@@ -3,7 +3,7 @@ package Razas;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import Razas.Raza.Status;
-import Razas.Raza.tipoDeRaza;
+import Razas.TipoDeRaza;
 
 
 public class Ejercito extends Unidad {
@@ -12,6 +12,7 @@ public class Ejercito extends Unidad {
 
 	private Queue<Unidad> army = new PriorityQueue<Unidad>();
 	private Queue<Unidad> auxiliar = new PriorityQueue<Unidad>();
+	//TODO:Cambiar auxiliar en cada metodo
 	private Bando bando;
 	private Unidad soldadoListo;
 	
@@ -24,7 +25,7 @@ public class Ejercito extends Unidad {
 	 * @param bando
 	 */
 	
-	public Ejercito(tipoDeRaza raza, int cantidad, Bando bando) {
+	public Ejercito(TipoDeRaza raza, int cantidad, Bando bando) {
 		for (int i = 0; i < cantidad; i++) {
 			aniadirUnidad(raza);
 		}
@@ -38,23 +39,18 @@ public class Ejercito extends Unidad {
 	
 	//delegar al bufferReader (crear las unidades)
 
-	private void aniadirUnidad(tipoDeRaza raza){
-		Raza soldado = null; 
-		if(raza == tipoDeRaza.NORTAICHIAN) {
-			soldado = new Nortaichian();
-			army.add(soldado);
+	private void aniadirUnidad(TipoDeRaza raza){
+		if(raza == TipoDeRaza.NORTAICHIAN) {
+			army.add(new Nortaichian());
 		}
-		if(raza == tipoDeRaza.WRIVES) {
-			soldado = new Nortaichian();
-			army.add(soldado);
+		if(raza == TipoDeRaza.WRIVES) {
+			army.add(new Wrives());
 		}
-		if(raza == tipoDeRaza.RADAITERAN) {
-			soldado = new Nortaichian();
-			army.add(soldado);
+		if(raza == TipoDeRaza.RADAITERAN) {
+			army.add(new Radaiteran());
 		}
-		if(raza == tipoDeRaza.RERALOPES) {
-			soldado = new Nortaichian();
-			army.add(soldado);
+		if(raza == TipoDeRaza.RERALOPES) {
+			army.add(new Reralopes());
 		}
 		
 	}
@@ -82,17 +78,18 @@ public class Ejercito extends Unidad {
 		}
 
 	}
-	public void atacar(Ejercito enemigo) {
-		ControladorDeBatalla.getControlador().batallar(this, enemigo);
-	}
+	
 	@Override
 	protected void atacar(Unidad enemigo) {
-		//ControladorDeBatalla.getControlador().batallar(this, enemigo);	
+		army.peek().atacar(enemigo);
+		
 	}
+	
 	
 	@Override
 	protected int recibirDanio(int danio) {
-		// TODO Auto-generated method stub
+		
+		army.peek().recibirDanio(danio);
 		return 0;
 	}
 	

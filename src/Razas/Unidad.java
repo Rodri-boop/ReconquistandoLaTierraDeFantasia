@@ -24,15 +24,10 @@ public abstract class Unidad implements Comparable<Unidad>{
 	
 	@Override
 	public int compareTo(Unidad o) {
-		if(this.bando == Bando.PROPIO && o.bando == Bando.ALIADO) {
-			return -1;
-		}
-		if(this.bando == Bando.ALIADO && o.bando == Bando.PROPIO) {
-			return 1;
-		}else {
+		if(this.bando.compareTo(o.bando) == 0) {
 			return this.getSalud().compareTo(o.getSalud())*(-1);
 		}
-			
+		return this.bando.compareTo(o.bando);
 	}
 
 	protected abstract Double getSalud();

@@ -22,31 +22,11 @@ public class ControladorDeBatalla {
 	//pasar a controlador de batalla, clase batallador que sea singleton
 	//debemos pasarle 2 ejercitos
 	public void batallar(Ejercito propio, Ejercito enemigo) {
-		Queue <Raza> enemigos = pueblito.getPoblado();
-		Raza enemigoActual = null;
-		Raza aliadoActual = null;
-		while(!enemigos.isEmpty() && !army.isEmpty()) {
-			enemigoActual = enemigos.poll();
-			aliadoActual =  army.poll();
-
-			//pelea individual
-			while(enemigoActual.getStatus() != Status.DESMAYADO && aliadoActual.getStatus()!= Status.DESMAYADO){
-				aliadoActual.atacar(enemigoActual);
-				if(enemigoActual.getStatus() != Status.DESMAYADO)
-					enemigoActual.atacar(aliadoActual);
-
-			}
-			if(enemigoActual.getStatus()== Status.DESMAYADO&& !enemigos.isEmpty()) {
-				enemigoActual = enemigos.poll();
-			}
-			if(aliadoActual.getStatus()== Status.DESMAYADO&& !army.isEmpty()) {
-				aliadoActual = army.poll();
-			}
-		}
-		if(enemigoActual.getStatus()== Status.DESMAYADO) {
-			army.add(aliadoActual);
-		}else {
-			enemigos.add(enemigoActual);
-		}
+		
+		while(enemigo.getSalud() > 0 && propio.getSalud() > 0) {
+			//TODO: Verificar antes de atacar
+			propio.atacar(enemigo);
+			enemigo.atacar(propio);
 	}
+}
 }

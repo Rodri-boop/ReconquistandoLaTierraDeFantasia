@@ -19,7 +19,7 @@ public class HumanosTest {
 		
 		humano.descansar();
 		Assert.assertNotNull(humano);
-		Assert.assertEquals(110.0, humano.salud, 0.1);
+		Assert.assertEquals(1010.0, humano.salud, 0.1);
 	}
 	
 	@Test
@@ -28,13 +28,8 @@ public class HumanosTest {
 		Humanos humano2 = new Humanos();
 		
 		humano.atacar(humano2);
-		
-		
-		System.out.println("vida:..."+humano2.salud+"\n"+"vida:..."+humano.salud);
 		humano.atacar(humano2);
-		System.out.println("vida:..."+humano2.salud+"\n"+"vida:..."+humano.salud);
 		humano.atacar(humano2);
-		System.out.println("vida:..."+humano2.salud+"\n"+"vida:..."+humano.salud);
 		
 	}
 
