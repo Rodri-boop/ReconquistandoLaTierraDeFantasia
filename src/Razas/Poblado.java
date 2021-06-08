@@ -1,27 +1,24 @@
 package Razas;
 
-import Razas.TipoDeRaza;
-
 public class Poblado {
 	private Bando bando;
-	private Ejercito army;
+	private Ejercito armyPoblado;
 	
-	
-	//ejercito no cola
 	public Poblado(TipoDeRaza raza, int cantidad, Bando bando){
 		this.bando = bando;
-		army = new Ejercito(raza, cantidad, bando);
+		armyPoblado = new Ejercito(raza, cantidad, bando);
 	}
 	
 	public Ejercito getEjercito(){
-		return this.army;
+		return this.armyPoblado;
 	}
 	public Bando getBando() {
 		return this.bando;
 	}
 	
-	public void atacar(Ejercito ejPropio) {
-		ControladorDeBatalla.getControlador().batallar(ejPropio, this.army);;
+	public void atacar(Ejercito armyPropio) {
+		ControladorDeBatalla.getControlador().batallar(armyPropio, this.armyPoblado);;
 	}
 }
 	
+

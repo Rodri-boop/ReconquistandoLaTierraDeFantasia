@@ -4,14 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
-import Razas.Raza.tipoDeRaza;
+//import java.util.Map;
+//import java.util.Map.Entry;
+import GrafoTP.Grafo;
 
 public class LectorDeArchivo {
 	private HashMap<Integer, Integer> cantidadHabitantes;
 	private HashMap<Integer, Bando> bandoMapa;
-	private HashMap<Integer, tipoDeRaza> razaMapa;
-	private int origen;
-	private int destino;
+	private HashMap<Integer, TipoDeRaza> razaMapa;
+	private String origen;
+	private String destino;
+	private Grafo ruta;
 	
 	private int cantPueblos = 0;
 	
@@ -19,7 +22,8 @@ public class LectorDeArchivo {
 		
 		cantidadHabitantes = new HashMap<Integer, Integer>();
 		bandoMapa = new HashMap<Integer, Bando>();
-		razaMapa = new HashMap<Integer, Raza.tipoDeRaza>();
+		razaMapa = new HashMap<Integer, TipoDeRaza>();
+		ruta = new Grafo();
 		
 		try {
 			if (archivo.exists()) {
@@ -38,15 +42,13 @@ public class LectorDeArchivo {
 				
 				lineaLeida = leerArchivo.readLine();
 				String[] palabras = lineaLeida.split(" ");
-				origen = Integer.parseInt(palabras[0]);
-				destino = Integer.parseInt(palabras[2]);
+				origen = palabras[0];
+				destino = palabras[2];
 				
 				lineaLeida = leerArchivo.readLine();
 				while (lineaLeida != null) {
 					String[] linea = lineaLeida.split(" ");
-					
-					
-					
+					ruta.agregarArista(linea[0], linea[1], Integer.parseInt(linea[2]));
 					lineaLeida = leerArchivo.readLine();
 				}
 			}
@@ -59,6 +61,10 @@ public class LectorDeArchivo {
 	}
 	
 	
+	public Grafo getRuta() {
+		return this.ruta;
+	}
+	
 	private Bando comprobarBando(String bando) {
 		if(bando.equals("propio")){
 			return Bando.PROPIO;}
@@ -68,15 +74,15 @@ public class LectorDeArchivo {
 			return Bando.ENEMIGO;}
 	}
 
-	private tipoDeRaza comprobarRaza(String raza) {
+	private TipoDeRaza comprobarRaza(String raza) {
 		if(raza.equals("Nortaichian")) {
-			return tipoDeRaza.NORTAICHIAN;}
+			return TipoDeRaza.NORTAICHIAN;}
 		else if (raza.equals("Wrives")) {
-			return tipoDeRaza.WRIVES;}
+			return TipoDeRaza.WRIVES;}
 		else if (raza.equals("Reralopes")) {
-			return tipoDeRaza.RERALOPES;}
+			return TipoDeRaza.RERALOPES;}
 		else {
-			return tipoDeRaza.RADAITERAN;}
+			return TipoDeRaza.RADAITERAN;}
 	}
 	
 //	public static void main(String[] args) {
@@ -92,7 +98,7 @@ public class LectorDeArchivo {
 //			System.out.println(pueblo1.getValue());
 //		}
 //		
-//		for (Map.Entry<Integer, tipoDeRaza> pueblo2 : lec.razaMapa.entrySet()) {
+//		for (Map.Entry<Integer, TipoDeRaza> pueblo2 : lec.razaMapa.entrySet()) {
 //			System.out.println(pueblo2.getValue());
 //		}
 //		

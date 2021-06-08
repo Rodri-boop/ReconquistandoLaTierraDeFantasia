@@ -8,15 +8,11 @@ import Razas.TipoDeRaza;
 
 public class Ejercito extends Unidad {
 
-
-
-	private Queue<Unidad> army = new PriorityQueue<Unidad>();
+	protected Queue<Unidad> army = new PriorityQueue<Unidad>();
 	private Queue<Unidad> auxiliar = new PriorityQueue<Unidad>();
 	//TODO:Cambiar auxiliar en cada metodo
 	private Bando bando;
 	private Unidad soldadoListo;
-	
-	
 	
 	/**
 	 * Constructor
@@ -58,14 +54,6 @@ public class Ejercito extends Unidad {
 		army.add(unidad);
 	}
 
-	
-
-
-	//atacar en ejercito devuelve el primer soldado de la cola
-	
-	/**
-	 * 
-	 */
 	@Override
 	protected void descansar() {
 		while(!army.isEmpty()) {
@@ -82,13 +70,11 @@ public class Ejercito extends Unidad {
 	@Override
 	protected void atacar(Unidad enemigo) {
 		army.peek().atacar(enemigo);
-		
 	}
 	
-	
+	//TODO: Cambiar todos los recibirDaño a void
 	@Override
 	protected int recibirDanio(int danio) {
-		
 		army.peek().recibirDanio(danio);
 		return 0;
 	}
