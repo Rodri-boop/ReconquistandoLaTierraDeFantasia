@@ -40,4 +40,8 @@ public class Reralopes extends Raza{
 		golpesDados++;
 		
 	}
+	
+	public void setBando(Bando bando) {
+		super.bando = bando;
+	}
 }

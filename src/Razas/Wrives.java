@@ -55,4 +55,8 @@ public class Wrives extends Raza{
 		this.SALUD_BASE+=50;
 		this.salud +=50;
 	}
+	
+	public void setBando(Bando bando) {
+		super.bando = bando;
+	}
 }

@@ -17,7 +17,7 @@ public class Poblado {
 	}
 	
 	public void atacar(Ejercito armyPropio) {
-		ControladorDeBatalla.getControlador().batallar(armyPropio, this.armyPoblado);;
+		ControladorDeBatalla.getControlador().batallar(armyPropio, this.armyPoblado);
 	}
 }
 	

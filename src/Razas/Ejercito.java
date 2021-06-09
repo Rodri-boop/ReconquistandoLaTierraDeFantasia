@@ -2,9 +2,6 @@ package Razas;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
-import Razas.Raza.Status;
-import Razas.TipoDeRaza;
-
 
 public class Ejercito extends Unidad {
 
@@ -12,7 +9,6 @@ public class Ejercito extends Unidad {
 	private Queue<Unidad> auxiliar = new PriorityQueue<Unidad>();
 	//TODO:Cambiar auxiliar en cada metodo
 	private Bando bando;
-	private Unidad soldadoListo;
 	
 	/**
 	 * Constructor
@@ -22,10 +18,10 @@ public class Ejercito extends Unidad {
 	 */
 	
 	public Ejercito(TipoDeRaza raza, int cantidad, Bando bando) {
+		this.bando = bando;
 		for (int i = 0; i < cantidad; i++) {
 			aniadirUnidad(raza);
 		}
-		this.bando = bando;
 	}
 	/**
 	 * 
@@ -37,16 +33,24 @@ public class Ejercito extends Unidad {
 
 	private void aniadirUnidad(TipoDeRaza raza){
 		if(raza == TipoDeRaza.NORTAICHIAN) {
-			army.add(new Nortaichian());
+			Nortaichian soldier = new Nortaichian();
+			soldier.setBando(bando);
+			army.add(soldier);
 		}
 		if(raza == TipoDeRaza.WRIVES) {
-			army.add(new Wrives());
+			Wrives soldier = new Wrives();
+			soldier.setBando(bando);
+			army.add(soldier);
 		}
 		if(raza == TipoDeRaza.RADAITERAN) {
-			army.add(new Radaiteran());
+			Radaiteran soldier = new Radaiteran();
+			soldier.setBando(bando);
+			army.add(soldier);
 		}
 		if(raza == TipoDeRaza.RERALOPES) {
-			army.add(new Reralopes());
+			Reralopes soldier = new Reralopes();
+			soldier.setBando(bando);
+			army.add(soldier);
 		}
 		
 	}
@@ -64,7 +68,6 @@ public class Ejercito extends Unidad {
 			soldado.descansar();
 			army.add(soldado);
 		}
-
 	}
 	
 	@Override
@@ -125,9 +128,5 @@ public class Ejercito extends Unidad {
 //
 //	}
 //}
-	
-	
-
-
 
 }

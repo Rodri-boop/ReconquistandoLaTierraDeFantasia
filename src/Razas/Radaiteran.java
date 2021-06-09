@@ -29,4 +29,8 @@ public class Radaiteran extends Raza{
 		//la consigna dice no hace nada asi que no ahce nada(?
 		
 	}
+	
+	public void setBando(Bando bando) {
+		super.bando = bando;
+	}
 }

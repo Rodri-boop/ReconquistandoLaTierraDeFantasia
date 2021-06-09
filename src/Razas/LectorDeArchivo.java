@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.HashMap;
+
 //import java.util.Map;
 //import java.util.Map.Entry;
 import GrafoTP.Grafo;
@@ -18,16 +19,16 @@ public class LectorDeArchivo {
 	
 	private int cantPueblos = 0;
 	
-	public void leerArchivo(File archivo) {
+	public void leerArchivo(String archivo) {
 		
 		cantidadHabitantes = new HashMap<Integer, Integer>();
 		bandoMapa = new HashMap<Integer, Bando>();
 		razaMapa = new HashMap<Integer, TipoDeRaza>();
 		ruta = new Grafo();
-		
+		File file = new File(archivo);
 		try {
-			if (archivo.exists()) {
-				BufferedReader leerArchivo = new BufferedReader(new FileReader(archivo));
+			if (file.exists()) {
+				BufferedReader leerArchivo = new BufferedReader(new FileReader(file));
 				String lineaLeida;
 				
 				cantPueblos = Integer.parseInt(leerArchivo.readLine()); //Primer linea
@@ -60,11 +61,30 @@ public class LectorDeArchivo {
 		}	
 	}
 	
-	
 	public Grafo getRuta() {
 		return this.ruta;
 	}
 	
+	public HashMap<Integer, Integer> getCantidadHabitantes() {
+		return cantidadHabitantes;
+	}
+
+	public HashMap<Integer, Bando> getBandoMapa() {
+		return bandoMapa;
+	}
+
+	public HashMap<Integer, TipoDeRaza> getRazaMapa() {
+		return razaMapa;
+	}
+
+	public String getOrigen() {
+		return origen;
+	}
+
+	public String getDestino() {
+		return destino;
+	}
+
 	private Bando comprobarBando(String bando) {
 		if(bando.equals("propio")){
 			return Bando.PROPIO;}
@@ -86,9 +106,8 @@ public class LectorDeArchivo {
 	}
 	
 //	public static void main(String[] args) {
-//		File file = new File("/D://Agustín//Escritorio/Camino.txt");
 //		LectorDeArchivo lec = new LectorDeArchivo();
-//		lec.leerArchivo(file);
+//		lec.leerArchivo("/D://Agustín//Escritorio/Camino.txt");
 //		
 //		for (Map.Entry<Integer, Integer> pueblo : lec.cantidadHabitantes.entrySet()) {
 //			System.out.println(pueblo.getValue());

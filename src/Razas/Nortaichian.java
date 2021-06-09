@@ -54,7 +54,10 @@ public class Nortaichian extends Raza {
 		else if(this.salud==SALUD_BASE){
 //			this.salud+=0;	
 		}
-		
+	}
+	
+	public void setBando(Bando bando) {
+		super.bando = bando;
 	}
 
 }

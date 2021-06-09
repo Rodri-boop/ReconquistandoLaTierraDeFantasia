@@ -4,24 +4,25 @@ import java.util.HashMap;
 import GrafoTP.Grafo;
 
 public class Mapa {
-	private Mapa instancia;
+	private static Mapa instancia;
 	private HashMap<Integer, Poblado> mapa;
-	HashMap<String, String> caminoMinimo;
+	private HashMap<String, String> caminoMinimo;
 	
 	private Mapa() {
 	}
 
-	public Mapa getInstancia() {
+	public static Mapa getInstancia() {
 		if(instancia == null)
 			instancia = new Mapa();
 			
 		return instancia;
 	}
 	
-	public void setMapa(HashMap<Integer, Integer> cantidadHabitantes, HashMap<Integer, Bando> bando, HashMap<Integer, TipoDeRaza> raza, String origen) {
+	public void setMapa(HashMap<Integer, Integer> cantidadHabitantes, HashMap<Integer, Bando> bando,
+		HashMap<Integer, TipoDeRaza> raza, String destino) {
 		mapa = new HashMap<Integer, Poblado>();
 		Poblado pueblo;
-		for (int i = 1; i <= Integer.parseInt(origen); i++) {
+		for (int i = 1; i <= Integer.parseInt(destino); i++) {
 			pueblo = new Poblado(raza.get(i), cantidadHabitantes.get(i),bando.get(i));
 			mapa.put(i, pueblo);
 		}
