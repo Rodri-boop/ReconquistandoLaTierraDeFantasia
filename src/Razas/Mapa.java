@@ -28,6 +28,10 @@ public class Mapa {
 		}
 	}
 	
+	public HashMap<Integer, Poblado> getMapa() {
+		return mapa;
+	}
+
 	public Ejercito getNuestroEjercito() {
 		return this.mapa.get(1).getEjercito();
 	}

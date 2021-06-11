@@ -23,25 +23,48 @@ public class Desarrollador {
 	}
 	
 	public void prediccion() {
-		
+		deRegresoACasa();
+		System.out.println(pila.pop());
+		Integer cabeza = Integer.parseInt(pila.peek());
+		System.out.println(pila.peek());
+		Poblado pobladoAux ;
+
+		while(!pila.isEmpty()&& myArmy.getSalud()>0) {
+			if(Mapa.getInstancia().getMapa().get(cabeza).getBando() == Bando.ALIADO) {
+				pobladoAux = Mapa.getInstancia().getMapa().get(Integer.parseInt(pila.pop()));
+				myArmy.aniadirUnidad(pobladoAux.getEjercito());
+				myArmy.descansar();
+
+			}else{
+				pobladoAux = Mapa.getInstancia().getMapa().get(Integer.parseInt(pila.pop()));
+				ControladorDeBatalla.getControlador().batallar(myArmy,pobladoAux.getEjercito());
+			}
+		}
+		if(myArmy.getSalud()>0) {
+			System.out.println("Ganaste chinchulin");
+		}else {
+			System.out.println("Perdiste chinchulin (u.u)");
+		}
 	}
-	
-	
+
+
 	private void deRegresoACasa() {
 		String ultimoPueblo = destino;
-		pila.add(ultimoPueblo);
+		pila.push(ultimoPueblo);
 		
 		while (!ultimoPueblo.equals(origen)) { //Recorremos el camino minimo desde el destino hacia el origen.
-			pila.add(Mapa.getInstancia().getCaminoMinimo().get(ultimoPueblo));
+			pila.push(Mapa.getInstancia().getCaminoMinimo().get(ultimoPueblo));
 			ultimoPueblo = Mapa.getInstancia().getCaminoMinimo().get(ultimoPueblo);
 		}
 	}
 	
 	
 	public static void main(String[] args) {
-		Desarrollador d = new Desarrollador("/D://Agustín//Escritorio/Camino.txt");
+		Desarrollador d = new Desarrollador("/C://Users//Agustin/Desktop/Camino.txt");
 		System.out.println(Mapa.getInstancia().getCaminoMinimo());
+		d.deRegresoACasa();
 		System.out.println(d.pila);
+		d.prediccion();
 	}
 	
 	//TODO: iniciar prediccion, pensar nuestro ejercito
