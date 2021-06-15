@@ -26,7 +26,7 @@ public class Radaiteran extends Raza{
 
 	@Override
 	protected void descansar() {
-		//la consigna dice no hace nada asi que no ahce nada(?
+		//la consigna dice no hace nada asi que no hace nada(?
 		
 	}
 	
