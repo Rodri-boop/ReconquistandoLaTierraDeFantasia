@@ -17,11 +17,11 @@ public class Radaiteran extends Raza{
 	}
 	
 	@Override
-	protected int recibirDanio(int danioRecibido) {
+	protected void recibirDanio(int danioRecibido) {
 		int danio=danioRecibido;
 		this.salud-=danio;
 		super.setStatus(SALUD_BASE);
-		return danio;
+		
 	}
 
 	@Override

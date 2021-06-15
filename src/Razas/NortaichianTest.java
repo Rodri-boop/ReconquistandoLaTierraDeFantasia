@@ -104,8 +104,9 @@ public class NortaichianTest {
 		Assert.assertEquals(61, nortaichian.salud, 0.1);
 	}
 
+
 	/**
-	 * Cuando un nortaichian se debilita pasa al estado de desmayado.
+	 * Cuando un Nortaichian recibe daño pasa al estado de herido.
 	 */
 	@Test
 	public void test008() {
@@ -114,33 +115,26 @@ public class NortaichianTest {
 
 		humano.atacar(nortaichian);
 		humano.atacar(nortaichian);
-		humano.atacar(nortaichian);
-		humano.atacar(nortaichian);
-		humano.atacar(nortaichian);
-		humano.atacar(nortaichian);
-		humano.atacar(nortaichian);
-		// Assert.assertEquals(Status.DESMAYADO,nortaichian.getStatus());
-	}
 
+		Assert.assertEquals(Status.HERIDO, nortaichian.getStatus());
+	}
+	
 	/**
-	 * Cuando un Nortaichian recibe daño pasa al estado de herido.
+	 * Todas las razas sin ser atacadas su estado inicial es SANO
 	 */
 	@Test
 	public void test009() {
 		Nortaichian nortaichian = new Nortaichian();
-		Humanos humano = new Humanos();
+	
 
-		humano.atacar(nortaichian);
-		humano.atacar(nortaichian);
-
-		Assert.assertEquals(Status.HERIDO, nortaichian.getStatus());
+		Assert.assertEquals(Status.SANO, nortaichian.getStatus());
 	}
 
 	/**
 	 * Los nortaichian si atacan y estan con su vida intacta no se cura.
 	 */
 	@Test
-	public void test0010() {
+	public void test010() {
 		Nortaichian nortaichian = new Nortaichian();
 		Humanos humano = new Humanos();
 
@@ -164,5 +158,14 @@ public class NortaichianTest {
 		Assert.assertEquals(66, nortaichian.salud, 0.1);
 	}
 	
+	/**
+	 * Cuando la aventura comienza a cada raza se le asigna un bando.
+	 */
+	@Test
+	public void test012() {
+		Nortaichian nortaichian = new Nortaichian();
+		nortaichian.setBando(Bando.ALIADO);;
+		Assert.assertEquals(Bando.ALIADO, nortaichian.bando);
+	}
 	
 }

@@ -24,27 +24,24 @@ public class Desarrollador {
 	
 	public void prediccion() {
 		deRegresoACasa();
-		System.out.println(pila.pop());
-		Integer cabeza = Integer.parseInt(pila.peek());
-		System.out.println(pila.peek());
-		Poblado pobladoAux ;
-
-		while(!pila.isEmpty()&& myArmy.getSalud()>0) {
-			if(Mapa.getInstancia().getMapa().get(cabeza).getBando() == Bando.ALIADO) {
-				pobladoAux = Mapa.getInstancia().getMapa().get(Integer.parseInt(pila.pop()));
-				myArmy.aniadirUnidad(pobladoAux.getEjercito());
+		pila.pop();		
+		do {
+			Integer puebloAVisitar = Integer.parseInt(pila.pop());
+			Poblado pobladoAux = Mapa.getInstancia().getMapa().get(puebloAVisitar);
+			if(Mapa.getInstancia().getMapa().get(puebloAVisitar).getBando()==Bando.ALIADO) {
 				myArmy.descansar();
-
-			}else{
-				pobladoAux = Mapa.getInstancia().getMapa().get(Integer.parseInt(pila.pop()));
+				myArmy.aniadirUnidad(pobladoAux.getEjercito());
+			}else {
 				ControladorDeBatalla.getControlador().batallar(myArmy,pobladoAux.getEjercito());
 			}
-		}
+		} while(!pila.isEmpty()&& myArmy.getSalud()>0);
+			
 		if(myArmy.getSalud()>0) {
 			System.out.println("Ganaste chinchulin");
 		}else {
 			System.out.println("Perdiste chinchulin (u.u)");
 		}
+		
 	}
 
 
@@ -60,9 +57,9 @@ public class Desarrollador {
 	
 	
 	public static void main(String[] args) {
-		Desarrollador d = new Desarrollador("/C://Users//Agustin/Desktop/Camino.txt");
+		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino.txt");
 		System.out.println(Mapa.getInstancia().getCaminoMinimo());
-		d.deRegresoACasa();
+		//d.deRegresoACasa(); este no va por que los haces que se reinicie y empieza mal sin este sale ganador.
 		System.out.println(d.pila);
 		d.prediccion();
 	}

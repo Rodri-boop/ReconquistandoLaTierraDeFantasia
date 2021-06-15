@@ -20,7 +20,7 @@ public abstract class Unidad implements Comparable<Unidad>{
 	protected abstract void descansar();
 	
 	
-	protected abstract int recibirDanio(int danio);
+	protected abstract void recibirDanio(int danio);
 	
 	@Override
 	public int compareTo(Unidad o) {

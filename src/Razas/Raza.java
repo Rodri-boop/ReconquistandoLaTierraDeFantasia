@@ -31,7 +31,7 @@ public abstract class Raza extends Unidad{
 	 * @param i
 	 * @return
 	 */
-	protected abstract int recibirDanio(int i);
+	protected abstract void recibirDanio(int i);
 	
 	protected abstract void descansar();
 	
@@ -47,7 +47,7 @@ public abstract class Raza extends Unidad{
 	protected void setStatus(Double salud1) {
         if(this.salud == salud1) {
             estado = Status.SANO;
-        }else if(this.salud!=salud1){
+        }else{
             estado = Status.HERIDO;
         }
     }

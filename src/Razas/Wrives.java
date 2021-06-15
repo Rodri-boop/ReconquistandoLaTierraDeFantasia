@@ -34,14 +34,14 @@ public class Wrives extends Raza{
 	 * en este caso los wrives reciben el doble de sus daño al no poseer armaduras.
 	 */
 	@Override
-	protected int recibirDanio(int danioRecibido) {
+	protected void recibirDanio(int danioRecibido) {
 		if(this.zen) {
 			this.zen=false;
 		}
 		int danio = danioRecibido*2;
 		this.salud-=danio;
 		super.setStatus(SALUD_BASE);
-		return danio;
+		
 	}
 
 	/**
@@ -59,4 +59,6 @@ public class Wrives extends Raza{
 	public void setBando(Bando bando) {
 		super.bando = bando;
 	}
+	
+	
 }

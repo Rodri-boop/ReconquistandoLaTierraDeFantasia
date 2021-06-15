@@ -15,11 +15,11 @@ public class Humanos extends Raza{
 	}
 
 	@Override
-	protected int recibirDanio(int danioRecibido) {
+	protected void recibirDanio(int danioRecibido) {
 		int danio = danioRecibido;
 		this.salud -= danio; 
 		
-		return danioRecibido;
+		
 	}
 
 	@Override

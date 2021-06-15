@@ -44,24 +44,12 @@ public class WrivesTest {
 		wrive.atacar(humano2);	
 	}
 	
-	
-	@Test
-	public void testWrives004() {
-		Wrives wrive = new Wrives();
-		Wrives wrive2 = new Wrives();
-		
-		wrive.atacar(wrive2);
-		wrive.atacar(wrive2);
-		//Assert.assertEquals(Status.DESMAYADO, wrive2.getStatus());
-			
-	}
-	
 
 	/**
 	 * Si un wrive descansa su salud base y su salud aumentan en 50 puntos
 	 */
 	@Test
-	public void testWrives005() {
+	public void testWrives004() {
 		Humanos humano = new Humanos();
 		Wrives wrive = new Wrives();
 		
@@ -72,8 +60,11 @@ public class WrivesTest {
 		Assert.assertEquals(138, wrive.salud,0.1);
 	}
 	
+	/**
+	 * Cuando una unidad recibe danio pasa a estar herido.
+	 */
 	@Test
-	public void testWrives006() {
+	public void testWrives005() {
 		Wrives wrive = new Wrives();
 		Humanos humano = new Humanos();
 		
@@ -81,4 +72,26 @@ public class WrivesTest {
 		Assert.assertEquals(Status.HERIDO, wrive.getStatus());
 			
 	}
+	
+	/**
+	 * Todas las razas sin ser atacadas su estado inicial es SANO
+	 */
+	@Test
+	public void testWrives006() {
+		Wrives wrive = new Wrives();
+		
+		Assert.assertEquals(Status.SANO, wrive.getStatus());
+			
+	}
+	
+	/**
+	 * Cuando la aventura comienza a cada raza se le asigna un bando.
+	 */
+	@Test
+	public void test007() {
+		Wrives wrive = new Wrives();
+		wrive.setBando(Bando.ALIADO);;
+		Assert.assertEquals(Bando.ALIADO, wrive.bando);
+	}
+
 }

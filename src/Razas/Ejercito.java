@@ -7,8 +7,7 @@ public class Ejercito extends Unidad {
 
 	protected Queue<Unidad> army = new PriorityQueue<Unidad>();
 	private Queue<Unidad> auxiliar = new PriorityQueue<Unidad>();
-	//TODO:Cambiar auxiliar en cada metodo
-	private Bando bando;
+	
 	
 	/**
 	 * Constructor
@@ -16,21 +15,18 @@ public class Ejercito extends Unidad {
 	 * @param cantidad
 	 * @param bando
 	 */
-	
 	public Ejercito(TipoDeRaza raza, int cantidad, Bando bando) {
-		this.bando = bando;
+		super.bando = bando;
 		for (int i = 0; i < cantidad; i++) {
 			aniadirUnidad(raza);
 		}
 	}
+	
 	/**
 	 * 
 	 * @param raza
 	 * @param cantidad
 	 */
-	
-	//delegar al bufferReader (crear las unidades)
-
 	private void aniadirUnidad(TipoDeRaza raza){
 		if(raza == TipoDeRaza.NORTAICHIAN) {
 			Nortaichian soldier = new Nortaichian();
@@ -75,11 +71,11 @@ public class Ejercito extends Unidad {
 		army.peek().atacar(enemigo);
 	}
 	
-	//TODO: Cambiar todos los recibirDaño a void
+	
 	@Override
-	protected int recibirDanio(int danio) {
+	protected void recibirDanio(int danio) {
 		army.peek().recibirDanio(danio);
-		return 0;
+		
 	}
 	
 	@Override

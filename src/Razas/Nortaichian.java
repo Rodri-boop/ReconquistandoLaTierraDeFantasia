@@ -11,17 +11,17 @@ public class Nortaichian extends Raza {
 	}
 	
 	@Override
-	protected int recibirDanio(int danioRecibido) {
+	protected void recibirDanio(int danioRecibido) {
 		int danio=danioRecibido;
 		if(turnosDePiedra != 0) {
 			this.salud -= danio/2;
 			super.setStatus(SALUD_BASE);
-			return danio/2;
-		}
+			
+		}else {
 		this.salud-=danio;
 		super.setStatus(SALUD_BASE);
 		potenciador = 2;
-		return danio;
+		}
 	}
 
 	@Override

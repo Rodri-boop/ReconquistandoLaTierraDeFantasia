@@ -102,8 +102,9 @@ public class ReralopesTest {
 		Assert.assertEquals(919, humano.salud,0.1);
 	}
 	
+	
 	/**
-	 * Cuando la salud de una unidad llega a 0 se desmaya.
+	 * Cuando una unidad recibe danio pasa a estar herido.
 	 */
 	@Test
 	public void test007() {
@@ -111,24 +112,27 @@ public class ReralopesTest {
 		Humanos humano = new Humanos();
 		
 		humano.atacar(reralope);
-		humano.atacar(reralope);
-		humano.atacar(reralope);
-		humano.atacar(reralope);
-		humano.atacar(reralope);
-		humano.atacar(reralope);
-		//Assert.assertEquals(Status.DESMAYADO, reralope.getStatus());
+		Assert.assertEquals(Status.HERIDO, reralope.getStatus());
 	}
 	
 	/**
-	 * Cuando una unidad recibe danio pasa a estar herido.
+	 * Todas las razas sin ser atacadas su estado inicial es SANO
 	 */
 	@Test
 	public void test008() {
 		Reralopes reralope = new Reralopes();
-		Humanos humano = new Humanos();
 		
-		humano.atacar(reralope);
-		Assert.assertEquals(Status.HERIDO, reralope.getStatus());
+		Assert.assertEquals(Status.SANO, reralope.getStatus());
+	}
+	
+	/**
+	 * Cuando la aventura comienza a cada raza se le asigna un bando.
+	 */
+	@Test
+	public void test009() {
+		Reralopes reralope = new Reralopes();
+		reralope.setBando(Bando.ALIADO);;
+		Assert.assertEquals(Bando.ALIADO, reralope.bando);
 	}
 
 	
