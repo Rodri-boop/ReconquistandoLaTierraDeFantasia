@@ -50,6 +50,7 @@ public class Ejercito extends Unidad {
 		}
 		
 	}
+	
 	public void aniadirUnidad(Unidad unidad) {
 		army.add(unidad);
 	}
@@ -91,6 +92,28 @@ public class Ejercito extends Unidad {
 		}
 		return total;
 	}
+
+	@Override
+	protected int contarCabezas() {
+		int suma=0;
+		for (Unidad unidad : army) {
+			
+			suma+=unidad.contarCabezas();
+		}
+		return suma;
+	}
+
+	
+	public Unidad quitarDesmayados() {
+		
+		return army.poll();	
+		}
+	@Override
+	protected boolean validarVida() {
+		
+		return army.peek().validarVida();
+	}
+	
 	
 	
 //	private void aniadirPropios(String raza, int cantidad) {

@@ -35,7 +35,23 @@ public abstract class Raza extends Unidad{
 	
 	protected abstract void descansar();
 	
-	//setear herido para todas las clases y agregarlo a recibir daño
+	protected boolean validarVida() {
+		if(this.salud>0) {
+			return true;
+		}
+		return false;
+	}
+	protected int contarCabezas() {
+		if(this.salud>0) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	protected Unidad quitarDesmayados() {
+		return null;
+		//queda feo pero lo sabemos nada que hacerle
+	}
 	
 	public Status getStatus() {
 		return this.estado;

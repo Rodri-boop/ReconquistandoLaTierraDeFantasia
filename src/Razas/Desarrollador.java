@@ -1,6 +1,5 @@
 package Razas;
 
-import java.util.Map;
 import java.util.Stack;
 
 public class Desarrollador {
@@ -37,13 +36,27 @@ public class Desarrollador {
 		} while(!pila.isEmpty()&& myArmy.getSalud()>0);
 			
 		if(myArmy.getSalud()>0) {
-			System.out.println("Ganaste chinchulin");
+			System.out.println("Ganaste chinchulin"+"\n"+aliadosVivos());
 		}else {
 			System.out.println("Perdiste chinchulin (u.u)");
 		}
 		
 	}
 
+	private String aliadosVivos() {
+		int vivosAliados = 0 ;
+		int vivosPropios = 0;
+		for (Unidad ejercito : this.myArmy.army) {
+			if(ejercito.bando==Bando.PROPIO) {
+		    vivosPropios+= ejercito.contarCabezas();
+		    }else {
+		    	vivosAliados+= ejercito.contarCabezas();
+		    }
+		}
+		return "\t"+"Tu ejercito sobrevivio a la reconquista de la tierra prometida con: "+"\n"+"\t"+vivosPropios+" Guerreros de tu ejercito"+"\n"
+		+"\t"+vivosAliados+" Guerreros de poblados aliados.";
+	}
+	
 
 	private void deRegresoACasa() {
 		String ultimoPueblo = destino;
@@ -57,10 +70,10 @@ public class Desarrollador {
 	
 	
 	public static void main(String[] args) {
-		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino.txt");
-		System.out.println(Mapa.getInstancia().getCaminoMinimo());
-		//d.deRegresoACasa(); este no va por que los haces que se reinicie y empieza mal sin este sale ganador.
-		System.out.println(d.pila);
+		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino4.txt");
+		//System.out.println(Mapa.getInstancia().getCaminoMinimo());
+		//d.deRegresoACasa(); //este no va por que los haces que se reinicie y empieza mal sin este sale ganador.
+		//System.out.println(d.pila);
 		d.prediccion();
 	}
 	

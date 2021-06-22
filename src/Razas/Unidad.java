@@ -22,6 +22,12 @@ public abstract class Unidad implements Comparable<Unidad>{
 	
 	protected abstract void recibirDanio(int danio);
 	
+	protected abstract boolean validarVida();
+	
+	protected abstract Unidad quitarDesmayados();
+	
+	protected abstract int contarCabezas();
+	
 	@Override
 	public int compareTo(Unidad o) {
 		if(this.bando.compareTo(o.bando) == 0) {
