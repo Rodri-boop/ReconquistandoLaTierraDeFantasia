@@ -45,8 +45,8 @@ public class Desarrollador {
 		} while(!pila.isEmpty()&& myArmy.getSalud()>0);
 			
 		if(myArmy.getSalud()>0) {
-			System.out.println("\t"+"\t"+"!!Victoria para tu pueblo Chinchulin!! "+"\n"+"\n"+aliadosVivos()+"\n"
-		+"\t"+"En "+dias+" dias lograste una hazaña.");
+			System.out.println("\t"+"\t"+"!!Victoria para tu pueblo Aventurero!! "+"\n"+"\n"+aliadosVivos()+"\n"
+		+"\t"+"En "+dias+" dias lograste Tu hazaña.");
 		}else {
 			System.out.println("\t"+"\t"+"!!Derrota para tu pueblo Chinchulin!!");
 		}

@@ -20,7 +20,7 @@ public class DesarrolladorTEST {
 	 * para que se presente una derrota.
 	 * 
 	 * 4
-	 * 1 100 Wrives propios
+	 * 1 20 Wrives propios
 	 * 2 30 Reralopes aliado
 	 * 3 70 Nortaichian enemigo
 	 * 4 60 Nortaichian enemigo
@@ -40,10 +40,10 @@ public class DesarrolladorTEST {
 	 * Este tes es un camino igual al de la consigna solo que se agregaron mas unidades y la raza R adaiteran
 	 * 
 	 * 4
-	 * 1 100 Wrives propios
+	 * 1 50 Wrives propios
 	 * 2 30 Reralopes aliado
-	 * 3 70 Radaiteran enemigo
-	 * 4 60 Nortaichian enemigo
+	 * 3 100 Radaiteran enemigo
+	 * 4 100 Nortaichian enemigo
 	 * 1 -> 4
 	 * 1 2 10
 	 * 1 3 20
@@ -56,6 +56,20 @@ public class DesarrolladorTEST {
 		d.prediccion();
 	}
 	
+	/**
+	 * Test de que sobran unidades aliadas
+	 * 
+	 * 4
+	 * 1 50 Radaiteran propios
+	 * 2 50 Wrives aliado
+	 * 3 60 Nortaichian enemigo
+	 * 4 60 Nortaichian enemigo
+	 * 1 -> 4
+	 * 1 2 10
+	 * 1 3 20
+	 * 2 3 5
+	 * 3 4 7
+	 */
 	@Test
 	public void test004() {
 		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino4.txt");
