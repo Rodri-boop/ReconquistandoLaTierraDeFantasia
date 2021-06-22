@@ -105,22 +105,4 @@ public class LectorDeArchivo {
 			return TipoDeRaza.RADAITERAN;}
 	}
 	
-//	public static void main(String[] args) {
-//		LectorDeArchivo lec = new LectorDeArchivo();
-//		lec.leerArchivo("/D://Agustín//Escritorio/Camino.txt");
-//		
-//		for (Map.Entry<Integer, Integer> pueblo : lec.cantidadHabitantes.entrySet()) {
-//			System.out.println(pueblo.getValue());
-//		}
-//		
-//		for (Map.Entry<Integer, Bando> pueblo1 : lec.bandoMapa.entrySet()) {
-//			System.out.println(pueblo1.getValue());
-//		}
-//		
-//		for (Map.Entry<Integer, TipoDeRaza> pueblo2 : lec.razaMapa.entrySet()) {
-//			System.out.println(pueblo2.getValue());
-//		}
-//		
-//	}
-
 }

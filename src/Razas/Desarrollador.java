@@ -10,18 +10,26 @@ public class Desarrollador {
 	private String destino;
 	private Stack<String> pila;
 	
+	/**
+	 * Constructor de nuestro camino para la batalla.
+	 * @param archivo
+	 */
 	public Desarrollador(String archivo) {
 		lector = new LectorDeArchivo();
 		lector.leerArchivo(archivo);
 		Mapa.getInstancia().setMapa(lector.getCantidadHabitantes(), lector.getBandoMapa(), lector.getRazaMapa(), lector.getDestino());
-		Mapa.getInstancia().calcularCaminoMinimo(lector.getRuta(), lector.getOrigen()); //Mmmmm 
+		Mapa.getInstancia().calcularCaminoMinimo(lector.getRuta(), lector.getOrigen(),lector.getDestino()); //Mmmmm 
 		myArmy = Mapa.getInstancia().getNuestroEjercito();
 		origen = lector.getOrigen();
 		destino = lector.getDestino();
 		pila = new Stack<String>();
 	}
 	
+	/**
+	 * Este metodo se encarga de leer el archivo y declarar los resultados de los recorridos.
+	 */
 	public void prediccion() {
+		Double dias = Mapa.getInstancia().getDias();
 		deRegresoACasa();
 		pila.pop();		
 		do {
@@ -33,16 +41,22 @@ public class Desarrollador {
 			}else {
 				ControladorDeBatalla.getControlador().batallar(myArmy,pobladoAux.getEjercito());
 			}
+			dias++;
 		} while(!pila.isEmpty()&& myArmy.getSalud()>0);
 			
 		if(myArmy.getSalud()>0) {
-			System.out.println("Ganaste chinchulin"+"\n"+aliadosVivos());
+			System.out.println("\t"+"\t"+"!!Victoria para tu pueblo Chinchulin!! "+"\n"+"\n"+aliadosVivos()+"\n"
+		+"\t"+"En "+dias+" dias lograste una hazaña.");
 		}else {
-			System.out.println("Perdiste chinchulin (u.u)");
+			System.out.println("\t"+"\t"+"!!Derrota para tu pueblo Chinchulin!!");
 		}
 		
 	}
 
+	/**
+	 * Devolvemos la cantidad de nuestros guerreros vivos.
+	 * @return
+	 */
 	private String aliadosVivos() {
 		int vivosAliados = 0 ;
 		int vivosPropios = 0;
@@ -53,11 +67,13 @@ public class Desarrollador {
 		    	vivosAliados+= ejercito.contarCabezas();
 		    }
 		}
-		return "\t"+"Tu ejercito sobrevivio a la reconquista de la tierra prometida con: "+"\n"+"\t"+vivosPropios+" Guerreros de tu ejercito"+"\n"
+		return "\t"+"Tu ejercito sobrevivio a la reconquista de la tierra de fantasia con: "+"\n"+"\t"+vivosPropios+" Guerreros de tu ejercito"+"\n"
 		+"\t"+vivosAliados+" Guerreros de poblados aliados.";
 	}
 	
-
+	/**
+	 * Recorremos el camino minimo desde el destino hacia el origen.
+	 */
 	private void deRegresoACasa() {
 		String ultimoPueblo = destino;
 		pila.push(ultimoPueblo);
@@ -70,13 +86,10 @@ public class Desarrollador {
 	
 	
 	public static void main(String[] args) {
-		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino4.txt");
-		//System.out.println(Mapa.getInstancia().getCaminoMinimo());
-		//d.deRegresoACasa(); //este no va por que los haces que se reinicie y empieza mal sin este sale ganador.
-		//System.out.println(d.pila);
+		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino.txt");
+		
 		d.prediccion();
 	}
 	
-	//TODO: iniciar prediccion, pensar nuestro ejercito
 
 }

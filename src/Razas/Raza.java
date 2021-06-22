@@ -48,7 +48,7 @@ public abstract class Raza extends Unidad{
 		return 0;
 	}
 	
-	protected Unidad quitarDesmayados() {
+	protected Unidad quitarSoldadosListos() {
 		return null;
 		//queda feo pero lo sabemos nada que hacerle
 	}

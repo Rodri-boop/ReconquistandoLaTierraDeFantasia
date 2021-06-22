@@ -23,7 +23,7 @@ public class Ejercito extends Unidad {
 	}
 	
 	/**
-	 * 
+	 * Aniade la unidad y la compara para ver que tipo de raza es.
 	 * @param raza
 	 * @param cantidad
 	 */
@@ -50,11 +50,18 @@ public class Ejercito extends Unidad {
 		}
 		
 	}
-	
+	/**
+	 * Metodo recursivo para poder aniadir unidades en el composite.
+	 * @param unidad
+	 */
 	public void aniadirUnidad(Unidad unidad) {
 		army.add(unidad);
 	}
 
+	/**
+	 * Descansa a todos las unidades del ejercito.
+	 * Dependiendo su raza el metodo es diferente.
+	 */
 	@Override
 	protected void descansar() {
 		while(!army.isEmpty()) {
@@ -67,18 +74,28 @@ public class Ejercito extends Unidad {
 		}
 	}
 	
+	/**
+	 * Metodo de ataque para las unidades del Ejercito
+	 * Dependiendo su raza el metodo es diferente.
+	 */
 	@Override
 	protected void atacar(Unidad enemigo) {
 		army.peek().atacar(enemigo);
 	}
 	
-	
+	/**
+	 * Metod de Recibir danio para las unidades del ejercito.
+	 * Dependiendo su raza el metodo es diferente.
+	 */
 	@Override
 	protected void recibirDanio(int danio) {
-		army.peek().recibirDanio(danio);
-		
+		army.peek().recibirDanio(danio);	
 	}
 	
+	/**
+	 * Metodo getSalud donde devuelve la suma de la salud total de todas las unidades
+	 * en una sola.
+	 */
 	@Override
 	protected Double getSalud() {
 		Double total = 0.0;
@@ -93,6 +110,9 @@ public class Ejercito extends Unidad {
 		return total;
 	}
 
+	/**
+	 * Metodo donde devuelve la suma de las unidades en nuestro ejercito.
+	 */
 	@Override
 	protected int contarCabezas() {
 		int suma=0;
@@ -103,49 +123,20 @@ public class Ejercito extends Unidad {
 		return suma;
 	}
 
-	
-	public Unidad quitarDesmayados() {
+	/**
+	 * Quita los soldados listos para el compate de la cola.
+	 */
+	public Unidad quitarSoldadosListos() {
 		
 		return army.poll();	
 		}
+	
+	/**
+	 * Valida la vida de nuestra unidad si esta viva o no.
+	 */
 	@Override
 	protected boolean validarVida() {
 		
 		return army.peek().validarVida();
 	}
-	
-	
-	
-//	private void aniadirPropios(String raza, int cantidad) {
-//	Raza soldado;
-//	if(raza == "Nortaichian") {
-//
-//		for(int i = 0;i<cantidad;i++) {	
-//			soldado= new Nortaichian();
-//			army.add(soldado);
-//		}
-//
-//	}if(raza == "Radaiteran") {
-//
-//		for(int i = 0; i < cantidad; i++) {
-//			soldado= new Radaiteran();
-//			army.add(soldado);
-//		}
-//
-//	}if(raza == "Reralopes") {
-//
-//		for(int i = 0; i < cantidad; i++) {
-//			soldado = new Reralopes();
-//			army.add(soldado);
-//		}
-//	}if(raza == "Wrives") {
-//
-//		for(int i = 0; i < cantidad; i++) {
-//			soldado = new Wrives();
-//			army.add(soldado);
-//		}
-//
-//	}
-//}
-
 }

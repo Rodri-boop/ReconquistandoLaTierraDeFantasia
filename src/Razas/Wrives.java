@@ -25,6 +25,7 @@ public class Wrives extends Raza{
 		enemigo.recibirDanio(this.danio_Basico);
 		golpesDados++;
 		}
+		this.zen=true;
 		}
 	}
 

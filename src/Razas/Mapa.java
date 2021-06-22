@@ -1,16 +1,23 @@
 package Razas;
 
 import java.util.HashMap;
+
+import GrafoTP.Dias;
 import GrafoTP.Grafo;
 
 public class Mapa {
 	private static Mapa instancia;
+	private Double dias;
 	private HashMap<Integer, Poblado> mapa;
 	private HashMap<String, String> caminoMinimo;
 	
 	private Mapa() {
 	}
 
+	/**
+	 * iniciamos nuestro singleton.
+	 * @return
+	 */
 	public static Mapa getInstancia() {
 		if(instancia == null)
 			instancia = new Mapa();
@@ -32,16 +39,33 @@ public class Mapa {
 		return mapa;
 	}
 
+	/**
+	 * Obtenemos nuestro ejercito.
+	 * @return
+	 */
 	public Ejercito getNuestroEjercito() {
 		return this.mapa.get(1).getEjercito();
 	}
 	
-	public void calcularCaminoMinimo(Grafo grafo, String origen) {
-		caminoMinimo = new HashMap<String,String>();
-		caminoMinimo = grafo.dijkstra(origen);
+	/**
+	 * Calculamos el camino minimo.
+	 * @param grafo
+	 * @param origen
+	 * @param destino
+	 */
+	public void calcularCaminoMinimo(Grafo grafo, String origen,String destino) {
+		
+		Dias d = grafo.dijkstraPesos(origen);
+		caminoMinimo = d.getPredecesores();
+		dias = d.getDistancias().get(destino);
 	}
+	
 	
 	public HashMap<String, String> getCaminoMinimo() {
 		return caminoMinimo;
 	}	
+	
+	public Double getDias() {
+		return this.dias;
+	}
 }

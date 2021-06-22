@@ -28,7 +28,8 @@ public class Grafo {
 		grafo.get(verticeDestino).aumentarGrado();
 	}
 
-	public HashMap<String, String> dijkstra(String verticeInicial) {
+	
+	public Dias dijkstraPesos(String verticeInicial) {
 		
 		PriorityQueue<Distancia> colaDePrioridad = new PriorityQueue<>();
 		HashMap<String, String> predecesores = new HashMap<>();
@@ -73,7 +74,7 @@ public class Grafo {
 			}
 		}
 		
-		return predecesores;
+		return new Dias(predecesores,distancias);
 	}
 
 	@Override
@@ -87,18 +88,4 @@ public class Grafo {
 		return mensaje;
 	}
 
-	public static void main(String[] args) {
-
-		Grafo grafoConAristaPositivas = new Grafo();
-		
-		grafoConAristaPositivas.agregarArista("V0", "V1", 1);
-		grafoConAristaPositivas.agregarArista("V0", "V2", 2);
-		grafoConAristaPositivas.agregarArista("V1", "V3", 3);
-		grafoConAristaPositivas.agregarArista("V2", "V4", 3);
-		grafoConAristaPositivas.agregarArista("V3", "V5", 4);
-		grafoConAristaPositivas.agregarArista("V4", "V5", 4);
-		
-		System.out.println(grafoConAristaPositivas);
-		System.out.println(grafoConAristaPositivas.dijkstra("V0"));
-	}
 }

@@ -16,7 +16,7 @@ public class DesarrolladorTEST {
 	}
 	
 	/**
-	 * Este tes es un camino igual al de la consigna solo que se agregaron mas unidades enemigas
+	 * Este test es un camino igual al de la consigna solo que se agregaron mas unidades enemigas
 	 * para que se presente una derrota.
 	 * 
 	 * 4
@@ -53,6 +53,12 @@ public class DesarrolladorTEST {
 	@Test
 	public void test003() {
 		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino3.txt");
+		d.prediccion();
+	}
+	
+	@Test
+	public void test004() {
+		Desarrollador d = new Desarrollador("/C://Users//rolin/OneDrive/Escritorio/Camino4.txt");
 		d.prediccion();
 	}
 }
